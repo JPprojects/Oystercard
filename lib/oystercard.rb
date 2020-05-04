@@ -8,16 +8,18 @@ class Oystercard
     end
 
     def touch_in
-        if !@journey
-            @journey = true
-        else
-            fail "In use"
-        end
+      # checking_balance()
+      fail "Insufficient Funds" if balance < 1
+      if !@journey
+          @journey = true
+      else
+        fail "In use"
+      end
     end
 
     def touch_out
         @journey = false
-    end 
+    end
 
     def add_money(deposit)
         @balance += deposit
@@ -30,8 +32,12 @@ class Oystercard
 
     def deduct_money(spending)
       @balance -= spending
-    end 
-
-    def checking_balance
     end
 end
+
+
+#     def checking_balance
+#       if @balance < 1
+#         fail "Insufficient Funds"
+#       end
+#     end

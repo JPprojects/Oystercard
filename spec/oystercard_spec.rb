@@ -39,14 +39,20 @@ describe Oystercard do
 
     describe "#touch_in" do
       it "responds to touch in" do
+        subject.add_money(5)
         expect(subject).to respond_to(:touch_in)
       end
-      it "should return true" do 
+      it "should return true" do
+        subject.add_money(5)
         expect(subject.touch_in).to eq true
       end
       it "should fail if touch in is called twice" do
-            subject.touch_in
-            expect{subject.touch_in}.to raise_error "In use"
+        subject.add_money(5)
+        subject.touch_in
+        expect{subject.touch_in}.to raise_error "In use"
+      end
+      it "should fail on touch in if balance is > £1" do
+        expect{subject.touch_in}.to raise_error "Insufficient Funds"
       end
     end
 
@@ -54,7 +60,7 @@ describe Oystercard do
       it "responds to touch out" do
         expect(subject).to respond_to(:touch_out)
       end
-      it "should return true" do 
+      it "should return true" do
         expect(subject.touch_out).to eq false
       end
     end
@@ -75,5 +81,5 @@ describe Oystercard do
         it "should respond checking_balance" do
             expect(subject).to respond_to(:checking_balance)
         end
-    end 
+    end
 end
