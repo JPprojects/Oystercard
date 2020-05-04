@@ -41,5 +41,39 @@ describe Oystercard do
       it "responds to touch in" do
         expect(subject).to respond_to(:touch_in)
       end
+      it "should return true" do 
+        expect(subject.touch_in).to eq true
+      end
+      it "should fail if touch in is called twice" do
+            subject.touch_in
+            expect{subject.touch_in}.to raise_error "In use"
+      end
     end
+
+    describe "#touch_out" do
+      it "responds to touch out" do
+        expect(subject).to respond_to(:touch_out)
+      end
+      it "should return true" do 
+        expect(subject.touch_out).to eq false
+      end
+    end
+
+    describe "#in_journey?" do
+        it "should know if the user has touched in" do
+            subject.touch_in()
+            expect(subject.journey).to eq true
+        end
+
+        it "should know if the user has touched out" do
+            subject.touch_out()
+            expect(subject.journey).to eq false
+        end
+    end
+
+    describe "#checking_balance" do
+        it "should respond checking_balance" do
+            expect(subject).to respond_to(:checking_balance)
+        end
+    end 
 end
