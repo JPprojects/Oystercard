@@ -1,2 +1,29 @@
+require "oystercard.rb"
+
 describe Oystercard do
+    it "should be able to create a new instance of Oyster card" do
+        card = Oystercard.new
+        expect(card).to be_instance_of Oystercard 
+    end
+
+    describe "#balance" do
+        it "should be able to view balance" do 
+            expect(subject.balance).to eq 0
+        end 
+    end
+
+    describe "#add_money" do
+        it "add_money should return a response" do
+            expect(subject).to respond_to (:add_money)
+        end
+
+        it "should be able to add moeny to a card" do
+            subject.add_money(50)
+            expect(subject.balance).to eq 50
+        end
+
+        it "it should error if more that the limit is added" do
+            expect{subject.add_money(91)}.to raise_error "limit reached"
+        end
+    end
 end
