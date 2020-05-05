@@ -1,12 +1,15 @@
 class Touch
+  MINIMUM_BALANCE = 1
   attr_reader :balance
+  attr_reader :journey
   def initialize(card)
-    @balance = card.balance
+    @card = card
+    @balance = @card.balance
 end
 
 def touch_in
   if !@journey
-    if @balance < 1
+    if @balance < MINIMUM_BALANCE
       raise "Insufficient Funds"
     end
   @journey = true
@@ -15,7 +18,8 @@ def touch_in
   end
 end
 
-def touch_out
+  def touch_out
     @journey = false
-end
+    @card.deduct_money(MINIMUM_BALANCE)
+  end
 end

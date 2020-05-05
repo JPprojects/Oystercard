@@ -1,10 +1,9 @@
 class Oystercard
     attr_reader :balance
-    attr_accessor :journey
     LIMIT = 90
 
     def initialize
-        @balance = 0
+        @balance = 7
     end
 
     def add_money(deposit)
