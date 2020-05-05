@@ -3,7 +3,7 @@ class Oystercard
     LIMIT = 90
 
     def initialize
-        @balance = 7
+        @balance = 0
     end
 
     def add_money(deposit)
@@ -19,10 +19,3 @@ class Oystercard
       @balance -= spending
     end
 end
-
-
-#     def checking_balance
-#       if @balance < 1
-#         fail "Insufficient Funds"
-#       end
-#     end
