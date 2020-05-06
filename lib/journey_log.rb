@@ -1,5 +1,6 @@
 class JourneyLog
-attr_reader :history
+  attr_reader :history
+
   def initialize
     @history = []
   end

@@ -17,7 +17,7 @@ describe Touch do
       card_1.touch_in(old_street)
       expect{ card_1.touch_in(old_street) }.to raise_error "In use"
     end
-    
+
     it "should fail on touch in if balance is > £1" do
       card_2 = Touch.new(skint_card)
       expect{ card_2.touch_in(old_street) }.to raise_error "Insufficient Funds"
@@ -27,6 +27,12 @@ describe Touch do
       card_1 = Touch.new(oystercard)
       card_1.touch_in(old_street)
       expect(card_1.entry_station).to eq old_street
+    end
+
+    it "should update journey log" do 
+      card_1 = Touch.new(oystercard)
+      card_1.touch_in(old_street)
+      expect(card_1.log.history).to eq([old_street])
     end
   end
 

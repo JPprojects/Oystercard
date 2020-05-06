@@ -1,5 +1,8 @@
+require "journey_log.rb"
+
 class Oystercard
     attr_reader :balance
+    attr_reader :log
     LIMIT = 90
 
     def initialize
