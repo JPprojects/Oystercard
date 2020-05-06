@@ -6,24 +6,28 @@ class Touch
   def initialize(card)
     @card = card
     @balance = @card.balance
-end
-
-def touch_in(station)
-  @entry_station = station
-  if !journey?()
-    if @balance < MINIMUM_BALANCE
-      raise "Insufficient Funds"
-    end
-
-  else
-    fail "In use"
   end
-end
+
+  def touch_in(station)
+    @entry_station = station
+    fail "In use" if @active
+    fail "Insufficient Funds" if @balance < MINIMUM_BALANCE
+    @active = true
+  end
 
   def touch_out
       @entry_station = nil
+      @active = false 
       @card.deduct_money(MINIMUM_BALANCE)
   end
 
   private 
+
+  def journey?
+    if @entry_station.nil?
+      true
+    else
+      false
+    end 
+  end
 end

@@ -26,6 +26,7 @@ describe Oystercard do
             expect{subject.add_money(91)}.to raise_error "£#{Oystercard::LIMIT}limit reached"
         end
     end
+    
     describe "#deduct_money" do
       it "deduct_money should return a response" do
         expect(subject).to respond_to (:deduct_money)
