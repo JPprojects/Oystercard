@@ -1,9 +1,12 @@
 class Journey
   def initialize(log)
     @journey_log = log
+    @start = []
   end
 
   def start_journey(station)
+    @start << station.station
+    @start
     #keep track of station and zone
     #pass this to journey log
     #pass this to calculating method
