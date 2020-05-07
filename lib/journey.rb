@@ -1,15 +1,16 @@
-class Journey 
-  def initialize 
-  end   
+class Journey
+  def initialize(log)
+    @journey_log = log
+  end
 
-  def start_journey
+  def start_journey(station)
     #keep track of station and zone
     #pass this to journey log
     #pass this to calculating method
   end
 
   def finish_journey
-    #keep track of station and zone 
+    #keep track of station and zone
     #pass this into journey log
     #pass this to calculating method
   end
