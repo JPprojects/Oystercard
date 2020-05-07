@@ -1,18 +1,23 @@
 class Journey
+  attr_reader :start
+  attr_reader :finish
   def initialize(log)
     @journey_log = log
     @start = []
+    @finish = []
   end
 
   def start_journey(station)
     @start << station.station
-    @start
+    @journey_log.update(@start)
     #keep track of station and zone
     #pass this to journey log
     #pass this to calculating method
   end
 
   def finish_journey
+    @finish << station.station
+    @journey_log.update(@finish)
     #keep track of station and zone
     #pass this into journey log
     #pass this to calculating method
