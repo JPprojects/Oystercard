@@ -9,6 +9,7 @@ class Touch
     @card = card
     @balance = @card.balance
     @log = JourneyLog.new
+    @journey = Journey.new
   end
 
   def touch_in(station)
